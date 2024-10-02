@@ -3,9 +3,8 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "proyect2IPC2": {
+    "frontendcafeteria": {
       "projectType": "application",
-      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,12 +12,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/proyect2-ipc2",
+            "outputPath": "dist/frontendcafeteria",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -34,16 +31,18 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1m",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "300kb",
+                  "maximumError": "400kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false
             },
             "development": {
               "buildOptimizer": false,
@@ -60,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "proyect2IPC2:build:production"
+              "browserTarget": "frontendcafeteria:build:production"
             },
             "development": {
-              "browserTarget": "proyect2IPC2:build:development"
+              "browserTarget": "frontendcafeteria:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +70,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "proyect2IPC2:build"
+            "browserTarget": "frontendcafeteria:build"
           }
         },
         "test": {
@@ -90,6 +89,12 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "dir": "dist/frontendcafeteria"
           }
         }
       }
